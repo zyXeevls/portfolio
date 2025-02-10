@@ -1,0 +1,609 @@
+:root {
+  --primary: #2e3440;
+  --secondary: #3b4252;
+  --accent: #88c0d0;
+  --text: #eceff4;
+  --text-secondary: #d8dee9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background: var(--primary);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Navigation */
+li {
+  list-style: none;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  background: rgba(46, 52, 64, 0.9);
+  position: fixed; /* Mengatur posisi navbar agar tetap di atas */
+  top: 0; /* Menempatkan navbar di bagian atas */
+  width: 100%; /* Memastikan navbar mengambil lebar penuh */
+  z-index: 1000; /* Menjaga navbar di atas elemen lain */
+}
+
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #fff;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-item {
+  margin-right: 2rem;
+}
+
+.nav-link {
+  color: var(--accent);
+  text-decoration: none; /* Menghilangkan dekorasi teks */
+  padding: 5px 0;
+  font-size: 1.2rem;
+}
+
+.nav-link:hover {
+  color: var(--text-secondary);
+}
+
+.nav-logo img {
+  width: 70px;
+  height: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: var(--primary);
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 2rem;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    margin-right: 1.5rem;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 5% 4rem;
+  text-align: center;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+}
+
+/* Hero Section */
+.profile-container {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.profile-img {
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  box-shadow: 0px 0px 75px 3px rgba(74, 144, 226, 1);
+  animation: float 4s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: var(--text);
+}
+
+.hero p {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* sosmed icons */
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 24px;
+}
+
+.social-icons a:hover {
+  color: #007bff;
+}
+
+/*background bergerak*/
+.firefly {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #f1d204;
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: float 8s infinite ease-in-out;
+  box-shadow: 0 0 10px #ffee00;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(100px, 50px);
+    opacity: 0.3;
+  }
+  80% {
+    transform: translate(-50px, -30px);
+  }
+}
+
+/* Sections */
+section {
+  padding: 6rem 5%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+/* about grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-card {
+  background: var(--secondary);
+  padding: 2rem;
+  border-radius: 15px;
+  transition: transform 0.3s;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+}
+
+.edu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.edu-content {
+  display: flex;
+  gap: 24px;
+}
+
+.education-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.education-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 227px 1px rgba(80, 227, 194, 1);
+}
+
+.education-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.degree-label {
+  font-size: 0.875rem;
+  color: #6b7280; /* Gray */
+}
+.degree {
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding-bottom: 15px;
+}
+.date,
+.school {
+  font-size: 0.875rem;
+  color: #6b7280; /* Gray */
+}
+
+.map {
+  flex: 1;
+  max-width: 35%;
+  margin-left: auto;
+}
+
+.map iframe {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  border: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .education-item {
+    padding: 1px;
+  }
+
+  .education-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .degree {
+    font-size: 0.4rem;
+  }
+
+  .date,
+  .school {
+    font-size: 0.5rem;
+  }
+
+  .map iframe {
+    height: 80px; /* Lebih pendek untuk mobile */
+  }
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+}
+
+.skill-card {
+  background: var(--secondary);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-card2 {
+  background: var(--secondary);
+  border-radius: 8px;
+  padding: 80px;
+  text-align: center;
+}
+
+.skill-card2:hover {
+  transform: translateY(-5px);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.skill-card h4 {
+  padding-bottom: 15px;
+}
+
+.skills-bar {
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-card-bar {
+  background-color: #2c3e50;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+.skill-card-bar h2 {
+  text-align: center;
+}
+
+.progress {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 100%;
+  margin-top: 10px;
+  text-align: center;
+  box-shadow: 0px 0px 75px 3px rgba(74, 144, 226, 1);
+}
+
+.progress-bar {
+  background-color: #007bff;
+  width: 100%;
+  text-align: right;
+  padding-right: 5px;
+  background: #3498db;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--progress-1);
+  background: linear-gradient(90deg, #3498db, #9b59b6);
+  border-radius: 10px 0 0 10px;
+}
+
+.progress-bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--progress-1);
+  height: 100%;
+  width: var(--progress-2);
+  background: linear-gradient(90deg, #9b59b6, #e74c3c);
+  border-radius: 0 10px 10px 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .skill-card2 {
+    padding: 15px;
+  }
+
+  .progress-bar {
+    line-height: 18px;
+  }
+
+  .skills-bar {
+    padding-top: 0;
+  }
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Jarak antar proyek */
+}
+
+.project-card {
+  background: var(--secondary);
+  flex: 1 1 300px; /* Ukuran responsif */
+  border: 1px solid #ccc; /* Border untuk proyek */
+  border-radius: 8px; /* Sudut melengkung */
+  overflow: hidden; /* Sembunyikan overflow */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image-flex {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-image-flex-soon {
+  text-align: center;
+  padding: 25%;
+}
+
+.slides {
+  display: flex;
+  animation: slide 10s infinite;
+}
+
+.slidesNT {
+  display: flex;
+}
+
+.slide {
+  min-width: 100%;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0); /* Tampilkan slide pertama */
+  }
+  20% {
+    transform: translateX(0); /* Tetap di slide pertama */
+  }
+  25% {
+    transform: translateX(-100%); /* Geser ke kiri untuk slide kedua */
+  }
+  45% {
+    transform: translateX(-100%); /* Tetap di slide kedua */
+  }
+  50% {
+    transform: translateX(-200%); /* Geser ke kiri untuk slide ketiga */
+  }
+  70% {
+    transform: translateX(-200%); /* Tetap di slide ketiga */
+  }
+}
+
+.project-image {
+  min-width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.btn-container {
+  justify-content: center;
+  margin: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 1rem;
+  background: var(--secondary);
+  border: none;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 1rem;
+  background: var(--secondary);
+  border: none;
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+button {
+  background: var(--accent);
+  margin-top: 5px;
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: medium;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s;
+}
+
+.scroll-reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  p {
+    font-size: 0.7rem;
+  }
+}
